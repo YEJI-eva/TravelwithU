@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context >
+
+
+
+ 
+       <Resource 
+
+        name="jdbc/mysqldb​"
+
+        type="javax.sql.DataSource"
+
+        auth="Container"
+
+        driverClassName="com.mysql.cj.jdbc.Driver"
+
+        url="jdbc:mysql://localhost:3306/yeji?useUnicode=true&amp;characterEncoding=utf8&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=Asia/Seoul"
+        
+        username="yejiid"
+
+        password="0401"
+
+       />
+       
+
+</Context>
