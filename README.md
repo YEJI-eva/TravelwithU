@@ -8,6 +8,9 @@
 - 사용기술 : Java,Javascript,Json,Jquery, JSP/SERVLET, HTML5,CSS3
 
 #### 제작과정
+- Model2 MVC 패턴 구현
+- 관리자 페이지 구현
+- 현재 : Mybatis 연동 중 Cannot find class: BoardVO 오류 발생 -> BoardMapper에서 resultType = BoardVO를 모두 풀 패키지 경로로 적어준다.
 
 #### ER 다이아그램
 
