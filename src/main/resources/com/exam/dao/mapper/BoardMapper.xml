@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.dao.mapper.BoardMapper">
+<!-- 	select 문일때는 result 필수 insert일때는 파라미터 필수 -->
+   <select id="nextBoardNum" resultType="int"> 
+   		SELECT IFNULL(MAX(num), 0)+ 1 as bnum FROM board 
+   </select>
+   <insert id="insertBoard" parameterType="com.exam.vo.BoardVO">
+		INSERT INTO board (num, username, passwd, subject, content, readcount, ip, reg_date, re_ref, re_lev, re_seq) 
+		VALUES (#{num}, #{username}, #{passwd}, #{subject}, #{content}, #{readcount}, #{ip}, #{regDate}, #{reRef}, #{reLev}, #{reSeq})
+   </insert>
+   <select id="getBoards" resultType="com.exam.vo.BoardVO">
+   		SELECT *
+   		FROM board 
+   		<where>
+   			<if test="search != null and search != '' ">
+   				subject LIKE CONCAT('%', #{search}, '%')
+   			</if>
+   		</where>
+   		ORDER BY re_ref DESC, re_seq ASC
+   		LIMIT #{pageSize} OFFSET #{startRow}
+		<!-- LIMIT #{startRow -1}, #{pageSize} -->
+   </select>
+   
+   <select id="getBoardCount" resultType="int">
+   		SELECT COUNT(*)
+   		FROM board
+   		<where>
+   			<if test="search != null and search != '' ">
+   				subject LIKE CONCAT('%', #{search}, '%')
+   			</if>
+   		</where>
+   </select>
+   
+   <update id="updateReadcount">
+   		UPDATE board
+   		SET readcount = readcount+1
+   		WHERE num = #{num} 
+   </update>
+   
+   <select id="getBoard" resultType="com.exam.vo.BoardVO">
+   		SELECT * FROM board WHERE num = #{num}
+   </select>
+   
+   <select id="countByNumPasswd" resultType="int">
+   		SELECT COUNT(*)
+   		FROM board
+   		WHERE num = #{num}
+   		AND passwd = #{passwd}
+   </select>
+   
+   <update id="updateBoard">
+   		UPDATE board
+   		SET subject = #{subject}, content = #{content}
+   		WHERE num = #{num}
+   </update>
+   
+   <delete id="deleteBoard">
+   		DELETE FROM board WHERE num = #{num}
+   </delete>
+   
+   <insert id="updateReplyGroupSequence">
+   		UPDATE board 
+		SET re_seq = re_seq + 1 
+		WHERE re_ref = #{reRef}  
+		AND re_seq > #{reSeq} 
+   </insert>
+</mapper> 
