@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body class="subpage">
+<<<<<<< HEAD
 		<!-- Header -->
 			<jsp:include page="../include/header.jsp" />
 
@@ -30,6 +31,29 @@
     <th scope="col" class="tno">no.</th>
     <th scope="col" class="ttitle">title</th>
     <th scope="col" class="twriter">writer</th>
+=======
+
+			<!-- Header -->
+			<header id="header" class="alt">
+				<div class="logo"><a href="main">Road Trip <span> with YEJI<span></a></div>
+				<a href="#menu"><span>Menu</span></a>
+			</header>
+
+
+		<!-- Nav -->
+		
+			<jsp:include page="../include/nav_center.jsp" />	
+<section id="post" class="wrapper bg-img" data-bg="banner2.jpg">
+				<div class="inner">
+					<article class="box">
+
+<h1>Notice [전체글개수 : ${pageInfoMap.count}]</h1> 
+<table id="notice">
+  <tr>
+    <th scope="col" class="tno">no.</th>
+    <th scope="col" class="ttitle">title</th>
+    <th scope="col" class="twrite">writer</th>
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
     <th scope="col" class="tdate">date</th>
     <th scope="col" class="tread">read</th>
   </tr>

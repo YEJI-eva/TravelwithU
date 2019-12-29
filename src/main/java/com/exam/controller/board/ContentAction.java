@@ -27,11 +27,18 @@ public class ContentAction implements Action{
 		// 글번호에 해당하는 레코드 한개 가져오기
 		BoardVO boardVO = boardDao.getBoard(num); 
 		// request 영역객체에 저장
+<<<<<<< HEAD
 		request.setAttribute("board", boardVO);
 		request.setAttribute("pageNum", pageNum);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("center/content");
+=======
+		request.setAttribute("boardVO", boardVO);
+		request.setAttribute("pageNum", pageNum);
+		ActionForward forward = new ActionForward();
+		forward.setPath("company/content");
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 		forward.setRedirect(false);
 		return forward;
 	}

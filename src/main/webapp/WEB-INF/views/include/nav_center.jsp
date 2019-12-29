@@ -35,6 +35,7 @@ id = (String) session.getAttribute("id");
 					<li><a href="main">Home</a></li>
 					<li class="login"><a href="memberLoginForm">Login</a></li>
 					<li><a href="memberJoinForm">SignUp</a></li>
+<<<<<<< HEAD
 					<li><a href="welcome">Welcome</a></li>
 					<li><a href="board">Board</a></li>
 					<li><a href="fnotice">File Board</a></li>
@@ -52,6 +53,25 @@ id = (String) session.getAttribute("id");
 				<li><a href="main">Home</a></li>
 				<li><a href="memberLogout">로그아웃</a></li>
 				<li><a href="welcome">Welcome</a></li>
+=======
+					<li><a href="elements">Welcome</a></li>
+					<li><a href="board">Board</a></li>
+					<li><a href="fnotice">File Board</a></li>
+						<%
+		} else { // id != null 세션값 있음
+			if (id.equals("admin")) {
+				%>	
+					<li><a href="memberLogout">로그아웃</a></li>
+					<li><a href="adminWholeMemberForm">회원관리</a></li>
+					<li><a href="adminWholeBoardForm">게시글관리</a>/li>
+
+				<%	
+			} else {
+				%>	
+				<li><a href="main">Home</a></li>
+				<li><a href="memberLogout">로그아웃</a></li>
+				<li><a href="elements">Welcome</a></li>
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 				<li><a href="board">Board</a></li>
 				<li><a href="fnotice">File Board</a></li>
 				<%

@@ -37,7 +37,11 @@
 		<h2 class="community_board">전체 게시글조회</h2>
 		<div class="col-md-12">
 			<div class="table-responsive">
+<<<<<<< HEAD
 			<form action="adminContentDelete" method="post" >
+=======
+			<form action="adminContentDelete.do" method="post" >
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 				<table class="board_table" style="width: 100%;">
 					<tr id="boarder_head">
 						<th scope="col" class="tno">글번호</th>

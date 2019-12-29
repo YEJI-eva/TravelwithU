@@ -6,7 +6,11 @@ Cookie[] cookies = request.getCookies();
 if (cookies != null) {
 	for (Cookie cookie : cookies) {
 		if (cookie.getName().equals("name")) {
+<<<<<<< HEAD
 			cookie.setMaxAge(20); // 쿠키 유효기간 20초로 설정 -> 브라우저가 해당쿠키를 삭제처리함.
+=======
+			cookie.setMaxAge(0); // 쿠키 유효기간 0초로 설정 -> 브라우저가 해당쿠키를 삭제처리함.
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 			cookie.setPath("/"); // 삭제할 쿠키 경로도 동일해야 한다
 			response.addCookie(cookie);
 		}

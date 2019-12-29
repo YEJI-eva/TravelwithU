@@ -33,8 +33,12 @@ public class FileNoticeAction implements Action {
 		// 한페이지(화면)에 보여줄 글 개수
 		int pageSize = 10;
 		// 시작행번호 구하기
+<<<<<<< HEAD
 //		int startRow = (pageNum - 1) * pageSize + 1; // Oracle 기준
 		int startRow = (pageNum - 1) * pageSize; // MySQL 기준
+=======
+		int startRow = (pageNum - 1) * pageSize + 1;
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 		// 글목록 가져오기 메소드 호출
 		//List<BoardVO> boardList = boardDao.getBoards(startRow, pageSize, search);
 		// ==========================================

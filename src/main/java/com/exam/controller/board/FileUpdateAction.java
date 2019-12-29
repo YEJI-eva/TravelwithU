@@ -59,6 +59,7 @@ public class FileUpdateAction implements Action {
 		BoardVO boardVO = new BoardVO();
 		// 파라미터 찾아서 자바빈에 저장
 		String pageNum = multi.getParameter("pageNum");
+<<<<<<< HEAD
 		boardVO.setNum(Integer.parseInt(multi.getParameter("num"))); //수정할 글번호 저장
 		boardVO.setUsername(multi.getParameter("username"));
 		boardVO.setSubject(multi.getParameter("subject"));
@@ -102,6 +103,45 @@ public class FileUpdateAction implements Action {
 				}
 
 
+=======
+		boardVO.setNum(Integer.parseInt(multi.getParameter("num")));
+		boardVO.setUsername(multi.getParameter("username"));
+		boardVO.setSubject(multi.getParameter("subject"));
+		boardVO.setContent(multi.getParameter("content"));
+		// 게시글 수정하는 메소드 호출
+		BoardDao boardDao = BoardDao.getInstance();
+		boardDao.updateBoard(boardVO);
+		//============= 게시판 글 수정 처리 종료 =================
+		//============= 첨부파일 DB등록 처리 시작 =================
+		// AttachDao 준비
+		AttachDao attachDao = AttachDao.getInstance();
+		// Enumeration 열거형. file의 파라미터 이름들을 가짐
+		// 자바의 Iterator와 사용방법이 동일함
+		Enumeration<String> enu = multi.getFileNames();
+		while (enu.hasMoreElements()) { // 다음요소가 있으면
+			String str = enu.nextElement();
+			System.out.println(str);
+			// 파라미터 이름으로 실제로 업로드된 파일이름 구하기
+			// 해당 파라미터 이름을 업로드에 사용 안했으면 null이 리턴됨 
+			String realFileName = multi.getFilesystemName(str);
+			// 파일업로드 여부확인. 업로드 했으면
+			if (realFileName != null) {
+				// 자바빈 AttachVO 객체 생성
+				AttachVO attachVO = new AttachVO();
+				UUID uuid = UUID.randomUUID();
+				attachVO.setUuid(uuid.toString());
+				attachVO.setFilename(realFileName); // 실제 생성된 파일이름
+				attachVO.setBno(boardVO.getNum()); // 게시글 번호
+				// 이미지 파일여부 확인
+				File file = new File(realPath, realFileName);
+				String contentType = Files.probeContentType(file.toPath());
+				boolean isImage = contentType.startsWith("image");
+				if (isImage) {
+					attachVO.setFiletype("I"); // Image File
+				} else {
+					attachVO.setFiletype("O"); // Other
+				}
+>>>>>>> branch 'master' of https://github.com/YEJI-eva/TravelwithU.git
 				// 첨부파일정보 한개 등록하는 메소드 호출
 				attachDao.insertAttach(attachVO);
 			} // if 파일업로드 여부확인
